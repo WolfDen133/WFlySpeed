@@ -5,4 +5,5 @@ branches:
 projects:
   WFlySpeed:
     path: ""
+    icon: "icon.png"
 ...
