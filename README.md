@@ -4,9 +4,9 @@ Adds /flyspeed to pocketmine 4.12+
 
 ## Command
 
-Command | Usage | Permission | Aliases | Description
---- | --- | --- | ---
-`/flyspeed` | `/flyspeed <float: speed>` | `flyspeed.command.use` | `fspeed`, `flys`, `fs` | Change the speed of your flight
+| Command | Usage | Permission | Aliases | Description |
+| --- | --- | --- | --- | --- |
+| `/flyspeed` | `/flyspeed <float: speed>` | `flyspeed.command.use` | `fspeed`, `flys`, `fs` | Change the speed of your flight |
 
 ## Features 
 
