@@ -1,5 +1,8 @@
 # WFlyspeed
 
+Ever wanted a plugin to change your flyspeed like java edition?
+This plugin does just that!
+
 Adds /flyspeed to pocketmine 4.12+
 
 ## Command
