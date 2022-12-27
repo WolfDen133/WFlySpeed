@@ -4,11 +4,12 @@ namespace WolfDen133\FlySpeed;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\lang\Translatable;
 use pocketmine\player\Player;
+use pocketmine\plugin\Plugin;
+use pocketmine\plugin\PluginOwned;
 use pocketmine\utils\TextFormat;
 
-class FlySpeedCommand extends Command
+class FlySpeedCommand extends Command implements PluginOwned
 {
     private Main $plugin;
 
@@ -45,5 +46,10 @@ class FlySpeedCommand extends Command
 
         $this->plugin->updateFlySpeed($sender, $args[0]);
         $sender->sendMessage(TextFormat::DARK_GRAY . "[" . TextFormat::GREEN . "!" . TextFormat::DARK_GRAY . "]" . TextFormat::GRAY . " Successfully updated your fly-speed to " . TextFormat::AQUA . $args[0] . TextFormat::GRAY . "!");
+    }
+
+    public function getOwningPlugin(): Plugin
+    {
+        return $this->plugin;
     }
 }
