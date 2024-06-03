@@ -25,7 +25,7 @@ Ever wanted a plugin to change your flyspeed like in Java Edition? FlySpeed is h
 ## 🛠 Installation
 
 1. Download the latest release from the [Releases Page](https://github.com/ImmoDevs/FlySpeed/releases).
-2. Place the downloaded `.phar` file into your PocketMine-MP `plugins` folder.
+2. Place the downloaded `FlySpeed-PM5.phar` file into your PocketMine-MP `plugins` folder.
 3. Restart your PocketMine-MP server.
 
 ## 📝 License
