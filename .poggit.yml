@@ -5,4 +5,7 @@ branches:
 projects:
   FlySpeed-PM5:
     path: ""
+    icon: "icon.png"
+    lint:
+      phpstan: false
 ...
