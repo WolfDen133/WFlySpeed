@@ -1,4 +1,8 @@
-# FlySpeed
+# FlySpeed-PM5
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ImmoDevs/FlySpeed-PM5/main/icon.png" width="200" alt="Icon">
+</p>
 
 [![FlySpeed-PM5](https://img.shields.io/badge/FlySpeed_PM5-v0.0.2-brightgreen.svg)](https://github.com/ImmoDevs/FlySpeed-PM5)
 [![PocketMine-MP](https://img.shields.io/badge/PocketMine--MP-5.0.0-blue.svg)](https://github.com/pmmp/PocketMine-MP)
