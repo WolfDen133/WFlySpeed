@@ -1,6 +1,6 @@
 # FlySpeed
 
-[![FlySpeed-PM5](https://img.shields.io/badge/FlySpeed_PM5-v1.0.0-brightgreen.svg)](https://github.com/ImmoDevs/FlySpeed-PM5)
+[![FlySpeed-PM5](https://img.shields.io/badge/FlySpeed_PM5-v0.0.2-brightgreen.svg)](https://github.com/ImmoDevs/FlySpeed-PM5)
 [![PocketMine-MP](https://img.shields.io/badge/PocketMine--MP-5.0.0-blue.svg)](https://github.com/pmmp/PocketMine-MP)
 [![GNU AGPLv3 License](https://img.shields.io/badge/license-AGPLv3-blue)](https://www.gnu.org/licenses/agpl-3.0.html)
 [![Latest Release](https://img.shields.io/github/v/release/ImmoDevs/FlySpeed-PM5)](https://github.com/ImmoDevs/FlySpeed-PM5/releases)
