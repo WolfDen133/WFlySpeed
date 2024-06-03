@@ -7,10 +7,9 @@ namespace WolfDen133\FlySpeed;
 use pocketmine\event\Listener;
 use pocketmine\event\server\DataPacketSendEvent;
 use pocketmine\network\mcpe\protocol\UpdateAbilitiesPacket;
-use pocketmine\network\mcpe\protocol\types\player\PlayerPermissions;
-use pocketmine\network\mcpe\protocol\types\player\AbilitiesData;
-use pocketmine\network\mcpe\protocol\types\player\AbilitiesLayer;
-use pocketmine\permission\DefaultPermissionNames;
+use pocketmine\network\mcpe\protocol\types\PlayerPermissions;
+use pocketmine\network\mcpe\protocol\types\AbilitiesData;
+use pocketmine\network\mcpe\protocol\types\AbilitiesLayer;
 use pocketmine\permission\DefaultPermissions;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
@@ -91,7 +90,7 @@ class Main extends PluginBase implements Listener {
             AbilitiesLayer::ABILITY_FLYING => $for->isFlying(),
             AbilitiesLayer::ABILITY_NO_CLIP => !$for->hasBlockCollision(),
             AbilitiesLayer::ABILITY_OPERATOR => $isOp,
-            AbilitiesLayer::ABILITY_TELEPORT => $for->hasPermission(DefaultPermissionNames::COMMAND_TELEPORT),
+            AbilitiesLayer::ABILITY_TELEPORT => $for->hasPermission("pocketmine.command.teleport"), // Mengganti konstanta dengan string
             AbilitiesLayer::ABILITY_INVULNERABLE => $for->isCreative(),
             AbilitiesLayer::ABILITY_MUTED => false,
             AbilitiesLayer::ABILITY_WORLD_BUILDER => false,
@@ -108,6 +107,7 @@ class Main extends PluginBase implements Listener {
         $for->getNetworkSession()->sendDataPacket(UpdateAbilitiesPacket::create(new AbilitiesData(
             $isOp ? PlayerPermissions::OPERATOR : PlayerPermissions::MEMBER,
             $for->getId(),
+            $for->getId(), // Menggunakan ID pemain sebagai targetActorUniqueId
             [
                 new AbilitiesLayer(
                     AbilitiesLayer::LAYER_BASE,
