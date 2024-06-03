@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace WolfDen133\FlySpeed;
 
 use pocketmine\command\Command;
@@ -25,7 +27,7 @@ class FlySpeedCommand extends Command implements PluginOwned
         $this->plugin = $plugin;
     }
 
-    public function execute(CommandSender $sender, string $commandLabel, array $args)
+    public function execute(CommandSender $sender, string $commandLabel, array $args): void
     {
         if (!$this->testPermission($sender)) return;
 
@@ -44,7 +46,7 @@ class FlySpeedCommand extends Command implements PluginOwned
             return;
         }
 
-        $this->plugin->updateFlySpeed($sender, $args[0]);
+        $this->plugin->updateFlySpeed($sender, (float)$args[0]);
         $sender->sendMessage(TextFormat::DARK_GRAY . "[" . TextFormat::GREEN . "!" . TextFormat::DARK_GRAY . "]" . TextFormat::GRAY . " Successfully updated your fly-speed to " . TextFormat::AQUA . $args[0] . TextFormat::GRAY . "!");
     }
 

@@ -6,11 +6,10 @@ namespace WolfDen133\FlySpeed;
 
 use pocketmine\event\Listener;
 use pocketmine\event\server\DataPacketSendEvent;
-use pocketmine\network\mcpe\protocol\types\AbilitiesData;
-use pocketmine\network\mcpe\protocol\types\AbilitiesLayer;
-use pocketmine\network\mcpe\protocol\types\command\CommandPermissions;
-use pocketmine\network\mcpe\protocol\types\PlayerPermissions;
 use pocketmine\network\mcpe\protocol\UpdateAbilitiesPacket;
+use pocketmine\network\mcpe\protocol\types\player\PlayerPermissions;
+use pocketmine\network\mcpe\protocol\types\player\AbilitiesData;
+use pocketmine\network\mcpe\protocol\types\player\AbilitiesLayer;
 use pocketmine\permission\DefaultPermissionNames;
 use pocketmine\permission\DefaultPermissions;
 use pocketmine\player\Player;
@@ -31,14 +30,14 @@ class Main extends PluginBase implements Listener {
 
         $this->getServer()->getCommandMap()->register("FlySpeed", new FlySpeedCommand($this));
 
-        $config = new Config($this->getDataFolder() . "flyspeeds", Config::JSON);
+        $config = new Config($this->getDataFolder() . "flyspeeds.json", Config::JSON);
 
         $this->playerSpeeds = $config->getAll();
     }
 
     protected function onDisable(): void
     {
-        $config = new Config($this->getDataFolder() . "flyspeeds", Config::JSON);
+        $config = new Config($this->getDataFolder() . "flyspeeds.json", Config::JSON);
 
         $config->setAll($this->playerSpeeds);
         $config->save();
@@ -49,18 +48,18 @@ class Main extends PluginBase implements Listener {
      * @param float $value      Value of the flyspeed (default 1)
      * @return void
      */
-    public function updateFlySpeed (Player $player, float $value) : void
+    public function updateFlySpeed(Player $player, float $value): void
     {
         $this->playerSpeeds[$player->getUniqueId()->toString()] = $value;
 
         $this->internalChange($player, $value);
     }
 
-    public function onDataPacketSendEvent (DataPacketSendEvent $event) : void
+    public function onDataPacketSendEvent(DataPacketSendEvent $event): void
     {
         foreach ($event->getPackets() as $packet) {
             if ($packet instanceof UpdateAbilitiesPacket) {
-                $this->getScheduler()->scheduleDelayedTask(new ClosureTask(function () use ($event) : void
+                $this->getScheduler()->scheduleDelayedTask(new ClosureTask(function () use ($event): void
                 {
                     foreach ($event->getTargets() as $target) {
                         if (!$target->isConnected()) return;
@@ -83,7 +82,7 @@ class Main extends PluginBase implements Listener {
         }
     }
 
-    private function internalChange (Player $for, float $value) : void
+    private function internalChange(Player $for, float $value): void
     {
         $isOp = $for->hasPermission(DefaultPermissions::ROOT_OPERATOR);
 
@@ -107,15 +106,14 @@ class Main extends PluginBase implements Listener {
         ];
 
         $for->getNetworkSession()->sendDataPacket(UpdateAbilitiesPacket::create(new AbilitiesData(
-            $isOp ? CommandPermissions::OPERATOR : CommandPermissions::NORMAL,
             $isOp ? PlayerPermissions::OPERATOR : PlayerPermissions::MEMBER,
-                $for->getId(),
+            $for->getId(),
             [
                 new AbilitiesLayer(
-                AbilitiesLayer::LAYER_BASE,
-                $boolAbilities,
-                $value / 20,
-                0.1
+                    AbilitiesLayer::LAYER_BASE,
+                    $boolAbilities,
+                    $value / 20,
+                    0.1
                 )
             ]
         )));

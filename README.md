@@ -3,7 +3,7 @@
 Ever wanted a plugin to change your flyspeed like java edition?
 This plugin does just that!
 
-Adds /flyspeed to pocketmine 4.12+
+Adds /flyspeed to pocketmine 5.0.0+
 
 ## Command
 
