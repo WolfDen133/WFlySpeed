@@ -1,8 +1,9 @@
 ---
 name: FlySpeed
-version: 0.0.1
 main: WolfDen133\FlySpeed\Main
-api: 4.12.0
+version: 0.0.2
+api: 5.0.0
+authors: [WolfDen133, ImmoDevs]
 src-namespace-prefix: WolfDen133\FlySpeed
 
 permissions:

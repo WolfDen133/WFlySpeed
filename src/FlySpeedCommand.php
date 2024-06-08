@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace WolfDen133\FlySpeed;
 
 use pocketmine\command\Command;
@@ -39,13 +41,14 @@ class FlySpeedCommand extends Command implements PluginOwned
             return;
         }
 
-        if (!is_numeric($args[0])) {
-            $sender->sendMessage(TextFormat::DARK_GRAY . "[" . TextFormat::RED . "!" . TextFormat::DARK_GRAY . "]" . TextFormat::RED . "Argument 1 should be of type int/float!");
+        if (!is_numeric($args[0]) || (float)$args[0] <= 0) {
+            $sender->sendMessage(TextFormat::DARK_GRAY . "[" . TextFormat::RED . "!" . TextFormat::DARK_GRAY . "]" . TextFormat::RED . " Argument 1 should be a positive number!");
             return;
         }
 
-        $this->plugin->updateFlySpeed($sender, $args[0]);
-        $sender->sendMessage(TextFormat::DARK_GRAY . "[" . TextFormat::GREEN . "!" . TextFormat::DARK_GRAY . "]" . TextFormat::GRAY . " Successfully updated your fly-speed to " . TextFormat::AQUA . $args[0] . TextFormat::GRAY . "!");
+        $value = (float)$args[0];
+        $this->plugin->updateFlySpeed($sender, $value);
+        $sender->sendMessage(TextFormat::DARK_GRAY . "[" . TextFormat::GREEN . "!" . TextFormat::DARK_GRAY . "]" . TextFormat::GRAY . " Successfully updated your fly-speed to " . TextFormat::AQUA . $value . TextFormat::GRAY . "!");
     }
 
     public function getOwningPlugin(): Plugin
